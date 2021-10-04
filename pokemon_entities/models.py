@@ -12,6 +12,7 @@ class Pokemon(models.Model):
         verbose_name='Предок',
         default=None,
         on_delete=models.SET_NULL,
+        related_name='evolution',
         null=True,
         blank=True,
         )
