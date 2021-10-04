@@ -51,11 +51,10 @@ def show_all_pokemons(request):
 
 
 def show_pokemon(request, pokemon_id):
-    requested_pokemon = Pokemon.objects.filter(id=pokemon_id)
-    if not requested_pokemon:
+    try:
+        requested_pokemon = Pokemon.objects.get(id=pokemon_id)
+    except Pokemon.DoesNotExist:
         return HttpResponseNotFound('<h1>Такой покемон не найден</h1>')
-    else:
-        requested_pokemon = requested_pokemon[0]
     pokemon = {
         'title_ru': requested_pokemon.title,
         'title_en': requested_pokemon.title_en,
