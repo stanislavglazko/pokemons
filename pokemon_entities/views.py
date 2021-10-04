@@ -51,7 +51,7 @@ def show_all_pokemons(request):
 
 
 def show_pokemon(request, pokemon_id):
-    requested_pokemon = Pokemon.objects.filter(id=int(pokemon_id))
+    requested_pokemon = Pokemon.objects.filter(id=pokemon_id)
     if not requested_pokemon:
         return HttpResponseNotFound('<h1>Такой покемон не найден</h1>')
     else:
